@@ -130,10 +130,17 @@ command! Sjis Cp932
 " インデント Indent
 "-------------------------------------------------------------------------------
 set autoindent   " 自動でインデント
-set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
+set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量に
+set paste        " ペースト時にautoindentを無効
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
 set tabstop=2 shiftwidth=2 softtabstop=0
+
+if has("autocmd")
+    autocmd FileType *
+      \ let &l:comments
+      \=join(filter(split(&l:comments,  ', '),  'v:val =~ "^[sme]"'),  ', ')
+endif
 
 "-------------------------------------------------------------------------------
 " 移動設定 Move
@@ -169,3 +176,4 @@ set statusline=%F%r%h%=  " ステータスライン表示項目
 "-------------------------------------------------------------------------------
 \set guioptions-=T 
 \set guioptions-=m
+
