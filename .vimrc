@@ -3,6 +3,26 @@
 "-------------------------------------------------------------------------------
 set guioptions& guioptions+=M
 
+set nocompatible
+filetype off
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+"-------------------------------------------------------------------------------
+" プラグイン Plug-IN
+"-------------------------------------------------------------------------------
+" neocomplcacheを起動時に有効化
+" let g:neocomplcache_enable_at_startup = 1
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/surround.vim'
+" Vundleの処理後、ftpluginとindentを読み込む
+filetype plugin indent on
+
 
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
@@ -145,14 +165,7 @@ set statusline=%F%r%h%=  " ステータスライン表示項目
 
 
 "-------------------------------------------------------------------------------
-" プラグイン Plug-IN
-"-------------------------------------------------------------------------------
-" neocomplcacheを起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
-
-
-"-------------------------------------------------------------------------------
-" gVimのメニュー非表示 Plug-IN
+" gVimのメニュー非表示
 "-------------------------------------------------------------------------------
 \set guioptions-=T 
 \set guioptions-=m
